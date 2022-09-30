@@ -1,0 +1,6 @@
+framework module Pods_DFNSampleProject {
+  umbrella header "Pods-DFNSampleProject-umbrella.h"
+
+  export *
+  module * { export * }
+}
