@@ -13,6 +13,7 @@
 #import <React/RCTSurfacePresenter.h>
 #import <React/RCTSurfacePresenterBridgeAdapter.h>
 #import <ReactCommon/RCTTurboModuleManager.h>
+#import <AdBrixRM_XC/AdBrixRM_XC-Swift.h>
 
 #import <react/config/ReactNativeConfig.h>
 
@@ -43,6 +44,10 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   bridge.surfacePresenter = _bridgeAdapter.surfacePresenter;
 #endif
 
+  
+ AdBrixRM *adBrix = [AdBrixRM sharedInstance];
+ [adBrix initAdBrixWithAppKey:@"adbrix_app_key" secretKey:@"adbrix_secret_key"];
+  
   NSDictionary *initProps = [self prepareInitialProps];
   UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"DFN_Sample_Project", initProps);
 

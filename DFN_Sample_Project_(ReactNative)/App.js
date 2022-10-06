@@ -7,8 +7,10 @@
  */
 
 import React from 'react';
+import AdbrixRm from 'react-native-adbrix-remaster';
 import type {Node} from 'react';
 import {
+  Alert,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -16,6 +18,7 @@ import {
   Text,
   useColorScheme,
   View,
+  Button,
 } from 'react-native';
 
 import {
@@ -61,37 +64,21 @@ const App: () => Node = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  AdbrixRm.initRNPlugin();
+
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
+
         <View
           style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
+            backgroundColor: isDarkMode ? Colors.black : Colors.white, flex : 1, marginHorizontal : 16,
           }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+            <Text style = {styles.title}> DFINERY Test App for React Native</Text>
+            <Button title="Sample Custom Event 1" onPresse = {() => AdbrixRm.event("your_sample_event_1")}/>
+            <Button title="Sample Custom Event 2" onPresse = {() => AdbrixRm.event("your_sample_event_2")}/>
+
+
         </View>
-      </ScrollView>
-    </SafeAreaView>
+
   );
 };
 
@@ -112,6 +99,16 @@ const styles = StyleSheet.create({
   highlight: {
     fontWeight: '700',
   },
+  title:{
+    textAlign: 'center',
+    paddingVertical : 30,
+    fontSize : 35,
+  },
+  button : {
+    alignItems : 'center',
+    backgroundColor : '#DDDDDD',
+    padding : 10
+  }
 });
 
 export default App;

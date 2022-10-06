@@ -1,8 +1,11 @@
 package com.dfn_sample_project;
 
+import android.content.Intent;
+
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
+import com.igaworks.v2.core.AdBrixRm;
 
 public class MainActivity extends ReactActivity {
 
@@ -22,8 +25,10 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected ReactActivityDelegate createReactActivityDelegate() {
+
     return new MainActivityDelegate(this, getMainComponentName());
   }
+
 
   public static class MainActivityDelegate extends ReactActivityDelegate {
     public MainActivityDelegate(ReactActivity activity, String mainComponentName) {

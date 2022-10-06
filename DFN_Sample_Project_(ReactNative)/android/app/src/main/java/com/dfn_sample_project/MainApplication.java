@@ -10,6 +10,9 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.soloader.SoLoader;
 import com.dfn_sample_project.newarchitecture.MainApplicationReactNativeHost;
+import com.igaworks.v2.core.application.AbxActivityHelper;
+import com.igaworks.v2.core.application.AbxActivityLifecycleCallbacks;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
@@ -52,6 +55,10 @@ public class MainApplication extends Application implements ReactApplication {
   @Override
   public void onCreate() {
     super.onCreate();
+
+      AbxActivityHelper.initializeSdk(MainApplication.this, "your_adbrix_remastered_app_key", "your_adbrix_remastered_secret_key");
+      registerActivityLifecycleCallbacks(new AbxActivityLifecycleCallbacks());
+
     // If you opted-in for the New Architecture, we enable the TurboModule system
     ReactFeatureFlags.useTurboModules = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
     SoLoader.init(this, /* native exopackage */ false);
